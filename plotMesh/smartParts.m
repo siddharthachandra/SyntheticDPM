@@ -1,6 +1,7 @@
 %% preparation. getting fronto parallel.
 addpath toolbox_graph
-categories = {'monitortelevision'}%,'bed','chair','sofa','table'}
+%categories = {'monitortelevision'}%,'bed','chair','sofa','table'}
+categories = {'bed','chair','sofa','table'}
 numC = length(categories);
 
 parm.sizeRoot = [10 10];

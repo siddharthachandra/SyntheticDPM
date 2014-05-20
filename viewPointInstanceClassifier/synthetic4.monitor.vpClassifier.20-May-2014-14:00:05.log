@@ -1,0 +1,87 @@
+NUMLINES READ: 760
+
+parm = 
+
+               c: 1
+          padHog: 0
+             fct: 0.2000
+        sizeRoot: [10 10]
+         featDim: 32
+            sbin: 8
+    sanityChecks: 1
+      rootLength: 3200
+        sizeBBOX: [8 8]
+               e: 1.0000e-03
+      numSamples: 760
+        numViews: 4
+    numInstances: 1
+       dimension: 12800
+        patterns: {1x760 cell}
+          labels: {1x760 cell}
+          lossFn: @loss_vp
+       featureFn: @mypsi_vp
+    constraintFn: @mvc_vp
+
+There are 760 training examples
+Iter 1: .........*Reducing working set...done. (NumConst=1, SV=1, CEps=1.0000, QPEps=0.0000)
+Iter 2: .........*Reducing working set...done. (NumConst=2, SV=2, CEps=0.9598, QPEps=0.0000)
+Iter 3: .........*Reducing working set...done. (NumConst=3, SV=3, CEps=0.5646, QPEps=0.0000)
+Iter 4: .........*Reducing working set...done. (NumConst=4, SV=4, CEps=0.2198, QPEps=0.0000)
+Iter 5: .........*Reducing working set...done. (NumConst=5, SV=5, CEps=0.2516, QPEps=0.0000)
+Iter 6: .........*Reducing working set...done. (NumConst=6, SV=6, CEps=0.2008, QPEps=0.0926)
+Iter 7: .........*Reducing working set...done. (NumConst=7, SV=5, CEps=0.0958, QPEps=0.0000)
+Iter 8: .........*Reducing working set...done. (NumConst=8, SV=5, CEps=0.0631, QPEps=0.0000)
+Iter 9: .........*Reducing working set...done. (NumConst=9, SV=5, CEps=0.0574, QPEps=0.0000)
+Iter 10: .........*Reducing working set...done. (NumConst=10, SV=6, CEps=0.0635, QPEps=0.0000)
+Iter 11: .........*Reducing working set...done. (NumConst=11, SV=6, CEps=0.0515, QPEps=0.0000)
+Iter 12: .........*Reducing working set...done. (NumConst=12, SV=6, CEps=0.0341, QPEps=0.0001)
+Iter 13: .........*Reducing working set...done. (NumConst=13, SV=6, CEps=0.0382, QPEps=0.0001)
+Iter 14: .........*Reducing working set...done. (NumConst=14, SV=7, CEps=0.0356, QPEps=0.0000)
+Iter 15: .........*Reducing working set...done. (NumConst=15, SV=7, CEps=0.0357, QPEps=0.0134)
+Iter 16: .........*Reducing working set...done. (NumConst=16, SV=7, CEps=0.0262, QPEps=0.0000)
+Iter 17: .........*Reducing working set...done. (NumConst=17, SV=7, CEps=0.0222, QPEps=0.0000)
+Iter 18: .........*Reducing working set...done. (NumConst=18, SV=9, CEps=0.0313, QPEps=0.0000)
+Iter 19: .........*Reducing working set...done. (NumConst=19, SV=7, CEps=0.0222, QPEps=0.0000)
+Iter 20: .........*Reducing working set...done. (NumConst=20, SV=8, CEps=0.0152, QPEps=0.0050)
+Iter 21: .........*Reducing working set...done. (NumConst=21, SV=7, CEps=0.0147, QPEps=0.0000)
+Iter 22: .........*Reducing working set...done. (NumConst=22, SV=7, CEps=0.0099, QPEps=0.0002)
+Iter 23: .........*Reducing working set...done. (NumConst=23, SV=8, CEps=0.0098, QPEps=0.0047)
+Iter 24: .........*Reducing working set...done. (NumConst=24, SV=7, CEps=0.0102, QPEps=0.0000)
+Iter 25: .........*Reducing working set...done. (NumConst=25, SV=7, CEps=0.0058, QPEps=0.0001)
+Iter 26: .........*Reducing working set...done. (NumConst=26, SV=8, CEps=0.0078, QPEps=0.0002)
+Iter 27: .........*Reducing working set...done. (NumConst=27, SV=8, CEps=0.0061, QPEps=0.0027)
+Iter 28: .........*Reducing working set...done. (NumConst=28, SV=8, CEps=0.0040, QPEps=0.0000)
+Iter 29: .........*Reducing working set...done. (NumConst=29, SV=8, CEps=0.0048, QPEps=0.0000)
+Iter 30: .........*Reducing working set...done. (NumConst=30, SV=7, CEps=0.0043, QPEps=0.0000)
+Iter 31: .........*Reducing working set...done. (NumConst=31, SV=7, CEps=0.0029, QPEps=0.0000)
+Iter 32: .........*Reducing working set...done. (NumConst=32, SV=8, CEps=0.0034, QPEps=0.0000)
+Iter 33: .........*Reducing working set...done. (NumConst=33, SV=10, CEps=0.0025, QPEps=0.0000)
+Iter 34: .........*Reducing working set...done. (NumConst=34, SV=9, CEps=0.0037, QPEps=0.0000)
+Iter 35: .........*Reducing working set...done. (NumConst=35, SV=9, CEps=0.0021, QPEps=0.0005)
+Iter 36: .........*Reducing working set...done. (NumConst=36, SV=9, CEps=0.0020, QPEps=0.0000)
+Iter 37: .........*Reducing working set...done. (NumConst=37, SV=9, CEps=0.0017, QPEps=0.0000)
+Iter 38: .........*Reducing working set...done. (NumConst=38, SV=9, CEps=0.0015, QPEps=0.0000)
+Iter 39: .........*Reducing working set...done. (NumConst=39, SV=9, CEps=0.0015, QPEps=0.0000)
+Iter 40: .........*Reducing working set...done. (NumConst=40, SV=10, CEps=0.0011, QPEps=0.0000)
+Iter 41: .........*Reducing working set...done. (NumConst=41, SV=10, CEps=0.0012, QPEps=0.0005)
+Iter 42: .........*Reducing working set...done. (NumConst=42, SV=11, CEps=0.0012, QPEps=0.0005)
+Iter 43: .........*Reducing working set...done. (NumConst=43, SV=10, CEps=0.0010, QPEps=0.0003)
+Iter 44: .........*Reducing working set...done. (NumConst=44, SV=10, CEps=0.0011, QPEps=0.0005)
+Iter 45: .........*Reducing working set...done. (NumConst=45, SV=11, CEps=0.0010, QPEps=0.0002)
+Iter 46: .........*Reducing working set...done. (NumConst=46, SV=12, CEps=0.0011, QPEps=0.0003)
+Iter 47: .........(NumConst=46, SV=12, CEps=0.0006, QPEps=0.0003)
+Final epsilon on KKT-Conditions: 0.00056
+Upper bound on duality gap: 0.00062
+Dual objective value: dval=0.12188
+Primal objective value: pval=0.12250
+Total number of constraints in final working set: 46 (of 46)
+Number of iterations: 47
+Number of calls to 'find_most_violated_constraint': 35720
+Number of SV: 12 
+Norm of weight vector: |w|=0.46229
+Value of slack variable (on working set): xi=0.01509
+Value of slack variable (global): xi=0.01565
+Norm of longest difference vector: ||Psi(x,y)-Psi(x,ybar)||=4.21744
+Runtime in cpu-seconds: 12.54 (0.08% for QP, 0.16% for kernel, 46.89% for Argmax, 45.30% for Psi, 1.52% for init, 0.00% for cache update, 0.00% for cache const, 0.00% for cache add (incl. 0.00% for sum))
+Losses: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Average Prediction Loss per Sample: 0

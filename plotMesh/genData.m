@@ -3,9 +3,9 @@ addpath toolbox_graph
 categories = {'monitortelevision','bed','chair','sofa','table'}
 numC = length(categories);
 myfilter = fspecial('gaussian',[3 3], 2);
-for cID = 1:1, %numC,
+for cID = 2:5, %numC,
 	category = categories{cID};
-	for insID = 1:4,
+	for insID = 1:5,
 		if strcmp(category,'sofa'),
 			ANG = 60;
 		elseif strcmp(category,'monitortelevision'),
@@ -13,15 +13,15 @@ for cID = 1:1, %numC,
 		else,
 			 ANG = 75;
 		end
-		if strcmp(category,'monitortelevision') && insID > 1,
-			continue;
-		end
+% 		if strcmp(category,'monitortelevision') && insID > 1,
+% 			continue;
+% 		end
 		if strcmp(category,'bed') && insID == 3,
 			continue;
 		end
 		element = [category num2str(insID)];
 		clear y p r;
-		load([element '.mat']);
+		load(['../3dModels/ypr/' element '.mat']);
 		%% loading 3D model
 		v = load(fullfile('../3dModels/objs',[element '.obj.v']));
 		f = load(fullfile('../3dModels/objs',[element '.obj.f']));
@@ -74,12 +74,12 @@ for cID = 1:1, %numC,
 		            depthcolor = [depths depths depths];
 		            options.face_vertex_color = depths; % mat2gray(depths);
 		            plot_mesh(v3,f,options);
-		            print('-dpng',sprintf('synthetic4Monitor/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
-		            im = imread(sprintf('synthetic4Monitor/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+		            print('-dpng',sprintf('../../NIPS_DATA/%s/%s.f%d.u%d.a%d.png',category,element,face,uVid,angleid));
+		            im = imread(sprintf('../../NIPS_DATA/%s/%s.f%d.u%d.a%d.png',category,element,face,uVid,angleid));
 					im = removePadding_slim(im);
 					im = imresize(im,[8 8]*8);
 					%myfilteredimage = imfilter(im, myfilter, 'replicate');
-		            imwrite(im,sprintf('synthetic4Monitor/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+		            imwrite(im,sprintf('../../NIPS_DATA/%s/%s.f%d.u%d.a%d.png',category,element,face,uVid,angleid));
 					clf;
 		        end
 		    end
