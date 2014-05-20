@@ -1,5 +1,4 @@
 #categories = ['bed','chair','sofa','table']
-import sys
 categories = ['monitortelevision']
 for category in categories:
 	for num in range(2,6):
