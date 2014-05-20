@@ -5,7 +5,7 @@ numC = length(categories);
 myfilter = fspecial('gaussian',[3 3], 2);
 for cID = 2:5, %numC,
 	category = categories{cID};
-	for insID = 1:5,
+	for insID = 1:4,
 		if strcmp(category,'sofa'),
 			ANG = 60;
 		elseif strcmp(category,'monitortelevision'),
