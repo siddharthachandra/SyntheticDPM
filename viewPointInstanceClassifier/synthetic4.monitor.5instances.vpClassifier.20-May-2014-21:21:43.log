@@ -1,0 +1,63 @@
+NUMLINES READ: 3800
+
+parm = 
+
+               c: 100
+             fct: 0.2000
+        sizeRoot: [10 10]
+         featDim: 32
+            sbin: 8
+          padHog: 2
+    sanityChecks: 1
+      rootLength: 3200
+        sizeBBOX: [12 12]
+               e: 1.0000e-03
+      numSamples: 3800
+        numViews: 4
+    numInstances: 5
+       dimension: 64000
+        patterns: {1x3800 cell}
+          labels: {1x3800 cell}
+          lossFn: @loss_vp
+       featureFn: @mypsi_vp
+    constraintFn: @mvc_vp
+
+There are 3800 training examples
+Iter 1: .........*Reducing working set...done. (NumConst=1, SV=1, CEps=1.0000, QPEps=0.0000)
+Iter 2: .........*Reducing working set...done. (NumConst=2, SV=2, CEps=1.0184, QPEps=0.0000)
+Iter 3: .........*Reducing working set...done. (NumConst=3, SV=3, CEps=1.1986, QPEps=0.0000)
+Iter 4: .........*Reducing working set...done. (NumConst=4, SV=4, CEps=1.1308, QPEps=0.0000)
+Iter 5: .........*Reducing working set...done. (NumConst=5, SV=5, CEps=1.0054, QPEps=0.0000)
+Iter 6: .........*Reducing working set...done. (NumConst=6, SV=6, CEps=0.8553, QPEps=0.0000)
+Iter 7: .........*Reducing working set...done. (NumConst=7, SV=7, CEps=0.6435, QPEps=0.0000)
+Iter 8: .........*Reducing working set...done. (NumConst=8, SV=8, CEps=0.4828, QPEps=0.0000)
+Iter 9: .........*Reducing working set...done. (NumConst=9, SV=9, CEps=0.3986, QPEps=0.0000)
+Iter 10: .........*Reducing working set...done. (NumConst=10, SV=10, CEps=0.3702, QPEps=0.0000)
+Iter 11: .........*Reducing working set...done. (NumConst=11, SV=11, CEps=0.3615, QPEps=0.0282)
+Iter 12: .........*Reducing working set...done. (NumConst=12, SV=12, CEps=0.3771, QPEps=0.0396)
+Iter 13: .........*Reducing working set...done. (NumConst=13, SV=13, CEps=0.3008, QPEps=0.1494)
+Iter 14: .........*Reducing working set...done. (NumConst=14, SV=13, CEps=0.2475, QPEps=0.0589)
+Iter 15: .........*Reducing working set...done. (NumConst=15, SV=14, CEps=0.2818, QPEps=0.0540)
+Iter 16: .........*Reducing working set...done. (NumConst=16, SV=15, CEps=0.2935, QPEps=0.0718)
+Iter 17: .........*Reducing working set...done. (NumConst=17, SV=15, CEps=0.2020, QPEps=0.0278)
+Iter 18: .........*Reducing working set...done. (NumConst=18, SV=16, CEps=0.2815, QPEps=0.0728)
+Iter 19: .........*Reducing working set...done. (NumConst=19, SV=16, CEps=0.2122, QPEps=0.0463)
+Iter 20: .........*Reducing working set...done. (NumConst=20, SV=16, CEps=0.2284, QPEps=0.0525)
+Iter 21: .........*Reducing working set...done. (NumConst=21, SV=17, CEps=0.1861, QPEps=0.0373)
+Iter 22: .........*Reducing working set...done. (NumConst=22, SV=18, CEps=0.2091, QPEps=0.0905)
+Iter 23: .........*Reducing working set...done. (NumConst=23, SV=19, CEps=0.1926, QPEps=0.0431)
+Iter 24: .........*Reducing working set...done. (NumConst=24, SV=18, CEps=0.1832, QPEps=0.0571)
+Iter 25: .........*Reducing working set...done. (NumConst=25, SV=19, CEps=0.1855, QPEps=0.0597)
+Iter 26: .........*Reducing working set...done. (NumConst=26, SV=19, CEps=0.1422, QPEps=0.0703)
+Iter 27: .........*Reducing working set...done. (NumConst=27, SV=17, CEps=0.2021, QPEps=0.0159)
+Iter 28: .........*Reducing working set...done. (NumConst=28, SV=18, CEps=0.1668, QPEps=0.0364)
+Iter 29: .........*Reducing working set...done. (NumConst=29, SV=18, CEps=0.1606, QPEps=0.0215)
+Iter 30: .........*Reducing working set...done. (NumConst=30, SV=18, CEps=0.1388, QPEps=0.0465)
+Iter 31: .........*Reducing working set...done. (NumConst=31, SV=18, CEps=0.1496, QPEps=0.0477)
+Iter 32: .........*Reducing working set...done. (NumConst=32, SV=20, CEps=0.1140, QPEps=0.0394)
+Iter 33: .........*Reducing working set...done. (NumConst=33, SV=21, CEps=0.1737, QPEps=0.0518)
+Iter 34: .........*Reducing working set...done. (NumConst=34, SV=19, CEps=0.1297, QPEps=0.0390)
+Iter 35: .........*Reducing working set...done. (NumConst=35, SV=18, CEps=0.1168, QPEps=0.0501)
+Iter 36: .........*Reducing working set...done. (NumConst=36, SV=18, CEps=0.1274, QPEps=0.0312)
+Iter 37: .........*Reducing working set...done. (NumConst=37, SV=23, CEps=0.0966, QPEps=0.0386)
+Iter 38: .........*Reducing working set...d
