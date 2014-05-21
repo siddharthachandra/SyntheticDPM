@@ -94,7 +94,7 @@ avgLoss = getPredictionLoss(parm,model);
 fprintf('Average Prediction Loss per Sample: %g\n',avgLoss);
 diary off;
 
-save([list sprintf('vp%d.C%g',parm.numViews,parm.c) '.mat'],'parm','model','-v7.3');
+save([list sprintf('.vp%d.C%g',parm.numViews,parm.c) '.mat'],'parm','model','-v7.3');
 
 end
 

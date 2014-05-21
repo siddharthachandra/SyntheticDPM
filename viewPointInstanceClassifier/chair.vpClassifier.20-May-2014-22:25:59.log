@@ -1,0 +1,121 @@
+NUMLINES READ: 3040
+
+parm = 
+
+               c: 1
+             fct: 0.2000
+        sizeRoot: [10 10]
+         featDim: 32
+            sbin: 8
+          padHog: 2
+    sanityChecks: 1
+      rootLength: 3200
+        sizeBBOX: [12 12]
+               e: 1.0000e-03
+      numSamples: 3040
+        numViews: 4
+    numInstances: 4
+       dimension: 51200
+        patterns: {1x3040 cell}
+          labels: {1x3040 cell}
+          lossFn: @loss_vp
+       featureFn: @mypsi_vp
+    constraintFn: @mvc_vp
+
+There are 3040 training examples
+Iter 1: .........*Reducing working set...done. (NumConst=1, SV=1, CEps=1.0000, QPEps=0.0000)
+Iter 2: .........*Reducing working set...done. (NumConst=2, SV=2, CEps=1.0536, QPEps=0.0000)
+Iter 3: .........*Reducing working set...done. (NumConst=3, SV=3, CEps=1.1594, QPEps=0.0000)
+Iter 4: .........*Reducing working set...done. (NumConst=4, SV=4, CEps=0.8218, QPEps=0.0000)
+Iter 5: .........*Reducing working set...done. (NumConst=5, SV=5, CEps=0.6853, QPEps=0.0000)
+Iter 6: .........*Reducing working set...done. (NumConst=6, SV=6, CEps=0.5262, QPEps=0.0000)
+Iter 7: .........*Reducing working set...done. (NumConst=7, SV=7, CEps=0.3012, QPEps=0.0000)
+Iter 8: .........*Reducing working set...done. (NumConst=8, SV=8, CEps=0.2293, QPEps=0.0000)
+Iter 9: .........*Reducing working set...done. (NumConst=9, SV=9, CEps=0.1935, QPEps=0.0000)
+Iter 10: .........*Reducing working set...done. (NumConst=10, SV=10, CEps=0.1452, QPEps=0.0000)
+Iter 11: .........*Reducing working set...done. (NumConst=11, SV=10, CEps=0.1180, QPEps=0.0505)
+Iter 12: .........*Reducing working set...done. (NumConst=12, SV=11, CEps=0.1258, QPEps=0.0019)
+Iter 13: .........*Reducing working set...done. (NumConst=13, SV=11, CEps=0.0898, QPEps=0.0123)
+Iter 14: .........*Reducing working set...done. (NumConst=14, SV=10, CEps=0.0684, QPEps=0.0060)
+Iter 15: .........*Reducing working set...done. (NumConst=15, SV=11, CEps=0.0772, QPEps=0.0132)
+Iter 16: .........*Reducing working set...done. (NumConst=16, SV=12, CEps=0.0586, QPEps=0.0206)
+Iter 17: .........*Reducing working set...done. (NumConst=17, SV=13, CEps=0.0491, QPEps=0.0155)
+Iter 18: .........*Reducing working set...done. (NumConst=18, SV=14, CEps=0.0424, QPEps=0.0108)
+Iter 19: .........*Reducing working set...done. (NumConst=19, SV=15, CEps=0.0506, QPEps=0.0175)
+Iter 20: .........*Reducing working set...done. (NumConst=20, SV=15, CEps=0.0328, QPEps=0.0132)
+Iter 21: .........*Reducing working set...done. (NumConst=21, SV=15, CEps=0.0439, QPEps=0.0164)
+Iter 22: .........*Reducing working set...done. (NumConst=22, SV=15, CEps=0.0327, QPEps=0.0046)
+Iter 23: .........*Reducing working set...done. (NumConst=23, SV=15, CEps=0.0623, QPEps=0.0059)
+Iter 24: .........*Reducing working set...done. (NumConst=24, SV=15, CEps=0.0333, QPEps=0.0159)
+Iter 25: .........*Reducing working set...done. (NumConst=25, SV=16, CEps=0.0386, QPEps=0.0127)
+Iter 26: .........*Reducing working set...done. (NumConst=26, SV=15, CEps=0.0289, QPEps=0.0086)
+Iter 27: .........*Reducing working set...done. (NumConst=27, SV=15, CEps=0.0307, QPEps=0.0083)
+Iter 28: .........*Reducing working set...done. (NumConst=28, SV=16, CEps=0.0273, QPEps=0.0075)
+Iter 29: .........*Reducing working set...done. (NumConst=29, SV=17, CEps=0.0239, QPEps=0.0095)
+Iter 30: .........*Reducing working set...done. (NumConst=30, SV=16, CEps=0.0187, QPEps=0.0062)
+Iter 31: .........*Reducing working set...done. (NumConst=31, SV=17, CEps=0.0229, QPEps=0.0092)
+Iter 32: .........*Reducing working set...done. (NumConst=32, SV=17, CEps=0.0175, QPEps=0.0056)
+Iter 33: .........*Reducing working set...done. (NumConst=33, SV=18, CEps=0.0161, QPEps=0.0056)
+Iter 34: .........*Reducing working set...done. (NumConst=34, SV=17, CEps=0.0156, QPEps=0.0066)
+Iter 35: .........*Reducing working set...done. (NumConst=35, SV=17, CEps=0.0105, QPEps=0.0048)
+Iter 36: .........*Reducing working set...done. (NumConst=36, SV=17, CEps=0.0103, QPEps=0.0045)
+Iter 37: .........*Reducing working set...done. (NumConst=37, SV=17, CEps=0.0113, QPEps=0.0034)
+Iter 38: .........*Reducing working set...done. (NumConst=38, SV=18, CEps=0.0134, QPEps=0.0031)
+Iter 39: .........*Reducing working set...done. (NumConst=39, SV=18, CEps=0.0095, QPEps=0.0040)
+Iter 40: .........*Reducing working set...done. (NumConst=40, SV=19, CEps=0.0101, QPEps=0.0034)
+Iter 41: .........*Reducing working set...done. (NumConst=41, SV=19, CEps=0.0119, QPEps=0.0039)
+Iter 42: .........*Reducing working set...done. (NumConst=42, SV=20, CEps=0.0071, QPEps=0.0027)
+Iter 43: .........*Reducing working set...done. (NumConst=43, SV=20, CEps=0.0104, QPEps=0.0031)
+Iter 44: .........*Reducing working set...done. (NumConst=44, SV=19, CEps=0.0074, QPEps=0.0029)
+Iter 45: .........*Reducing working set...done. (NumConst=45, SV=21, CEps=0.0080, QPEps=0.0030)
+Iter 46: .........*Reducing working set...done. (NumConst=46, SV=18, CEps=0.0081, QPEps=0.0019)
+Iter 47: .........*Reducing working set...done. (NumConst=47, SV=19, CEps=0.0055, QPEps=0.0025)
+Iter 48: .........*Reducing working set...done. (NumConst=48, SV=20, CEps=0.0070, QPEps=0.0022)
+Iter 49: .........*Reducing working set...done. (NumConst=49, SV=21, CEps=0.0060, QPEps=0.0020)
+Iter 50: .........*Reducing working set...done. (NumConst=50, SV=20, CEps=0.0052, QPEps=0.0025)
+Iter 51: .........*Reducing working set...done. (NumConst=51, SV=19, CEps=0.0055, QPEps=0.0026)
+Iter 52: .........*Reducing working set...done. (NumConst=52, SV=20, CEps=0.0046, QPEps=0.0020)
+Iter 53: .........*Reducing working set...done. (NumConst=53, SV=18, CEps=0.0053, QPEps=0.0013)
+Iter 54: .........*Reducing working set...done. (NumConst=54, SV=19, CEps=0.0044, QPEps=0.0018)
+Iter 55: .........*Reducing working set...done. (NumConst=55, SV=20, CEps=0.0045, QPEps=0.0021)
+Iter 56: .........*Reducing working set...done. (NumConst=56, SV=20, CEps=0.0040, QPEps=0.0014)
+Iter 57: .........*Reducing working set...done. (NumConst=57, SV=20, CEps=0.0040, QPEps=0.0020)
+Iter 58: .........*Reducing working set...done. (NumConst=58, SV=21, CEps=0.0036, QPEps=0.0015)
+Iter 59: .........*Reducing working set...done. (NumConst=59, SV=19, CEps=0.0036, QPEps=0.0006)
+Iter 60: .........*Reducing working set...done. (NumConst=59, SV=20, CEps=0.0034, QPEps=0.0012)
+Iter 61: .........*Reducing working set...done. (NumConst=60, SV=20, CEps=0.0028, QPEps=0.0010)
+Iter 62: .........*Reducing working set...done. (NumConst=60, SV=20, CEps=0.0035, QPEps=0.0011)
+Iter 63: .........*Reducing working set...done. (NumConst=59, SV=19, CEps=0.0031, QPEps=0.0008)
+Iter 64: .........*Reducing working set...done. (NumConst=60, SV=20, CEps=0.0029, QPEps=0.0009)
+Iter 65: .........*Reducing working set...done. (NumConst=61, SV=22, CEps=0.0023, QPEps=0.0010)
+Iter 66: .........*Reducing working set...done. (NumConst=62, SV=22, CEps=0.0024, QPEps=0.0010)
+Iter 67: .........*Reducing working set...done. (NumConst=63, SV=23, CEps=0.0029, QPEps=0.0010)
+Iter 68: .........*Reducing working set...done. (NumConst=64, SV=21, CEps=0.0022, QPEps=0.0004)
+Iter 69: .........*Reducing working set...done. (NumConst=64, SV=22, CEps=0.0029, QPEps=0.0005)
+Iter 70: .........*Reducing working set...done. (NumConst=64, SV=23, CEps=0.0018, QPEps=0.0005)
+Iter 71: .........*Reducing working set...done. (NumConst=64, SV=22, CEps=0.0020, QPEps=0.0007)
+Iter 72: .........*Reducing working set...done. (NumConst=64, SV=22, CEps=0.0020, QPEps=0.0007)
+Iter 73: .........*Reducing working set...done. (NumConst=64, SV=22, CEps=0.0014, QPEps=0.0004)
+Iter 74: .........*Reducing working set...done. (NumConst=65, SV=24, CEps=0.0022, QPEps=0.0006)
+Iter 75: .........*Reducing working set...done. (NumConst=64, SV=24, CEps=0.0018, QPEps=0.0006)
+Iter 76: .........*Reducing working set...done. (NumConst=64, SV=24, CEps=0.0017, QPEps=0.0006)
+Iter 77: .........*Reducing working set...done. (NumConst=65, SV=23, CEps=0.0017, QPEps=0.0003)
+Iter 78: .........*Reducing working set...done. (NumConst=66, SV=23, CEps=0.0011, QPEps=0.0004)
+Iter 79: .........*Reducing working set...done. (NumConst=65, SV=24, CEps=0.0012, QPEps=0.0004)
+Iter 80: .........*Reducing working set...done. (NumConst=66, SV=23, CEps=0.0016, QPEps=0.0003)
+Iter 81: .........(NumConst=66, SV=23, CEps=0.0010, QPEps=0.0003)
+Final epsilon on KKT-Conditions: 0.00096
+Upper bound on duality gap: 0.00088
+Dual objective value: dval=0.66298
+Primal objective value: pval=0.66385
+Total number of constraints in final working set: 66 (of 80)
+Number of iterations: 81
+Number of calls to 'find_most_violated_constraint': 246240
+Number of SV: 23 
+Norm of weight vector: |w|=0.76579
+Value of slack variable (on working set): xi=0.37001
+Value of slack variable (global): xi=0.37063
+Norm of longest difference vector: ||Psi(x,y)-Psi(x,ybar)||=2.30232
+Runtime in cpu-seconds: 262.92 (0.05% for QP, 0.16% for kernel, 54.67% for Argmax, 42.21% for Psi, 0.56% for init, 0.00% for cache update, 0.00% for cache const, 0.00% for cache add (incl. 0.00% for sum))
+Losses: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Average Prediction Loss per Sample: 0.00230263
