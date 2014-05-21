@@ -1,8 +1,0 @@
-NUMLINES READ: 2280
-{??? Operation terminated by user during ==> trainViewPoint at 69
-} 
-69  	hog = features(double(im),parm.sbin);
-dbquit
-clear
-clc
-learn
