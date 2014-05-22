@@ -16,7 +16,6 @@ small = 1e-4;
 Xaxis = [0 1 0];
 Yaxis = [1 0 0];
 Zaxis = [0 0 1];
-BBOX = [ 0 0 1000; 80 80 1000];
 cropBOX = struct;
 parm.numViews = 4;
 
@@ -25,23 +24,23 @@ gridSize = 3;
 uVs = getUnitVectors(gridSize);
 nuVs = size(uVs,1);
 % enumerating angles
-angles = linspace(-pi/24,pi/24,11);
+angles = linspace(-pi/24,pi/24,5);
 numangles = length(angles);
 
 
 %%%
 
-IM = zeros(parm.sizeRoot*parm.sbin);
-partInd = 0;
-unitSquare = [0 0 1;1 0 1;1 1 0;0 1 1];
-%unitSquare = [0 0 1;0 1 1;1 1 0;1 0 1];
-init_axis = unitSquare(:,1:end-1);
-vdata = [0 1];  udata = [0 1];
-vertex_suffix = [ -20 -20 -inf; -20 100 -inf; 100 100 -inf; 100 -20 inf];
+% IM = zeros(parm.sizeRoot*parm.sbin);
+% partInd = 0;
+% unitSquare = [0 0 1;1 0 1;1 1 0;0 1 1];
+% %unitSquare = [0 0 1;0 1 1;1 1 0;1 0 1];
+% init_axis = unitSquare(:,1:end-1);
+% vdata = [0 1];  udata = [0 1];
+% vertex_suffix = [ -20 -20 -inf; -20 100 -inf; 100 100 -inf; 100 -20 inf];
 %%%
 for cID = 1:numC,
 	category = categories{cID};
-	for insID = 1:5, %number of instances (3D models)
+	for insID = 1:1, %number of instances (3D models)
 %         keyboard;
 		if strcmp(category,'sofa'),
 			ANG = 60;
@@ -82,7 +81,7 @@ for cID = 1:numC,
 % 		minZ = min(v(:,find(Zaxis)));
 % 		maxZ = max(v(:,find(Zaxis)));
 % 		sizeZ = maxZ - minZ;
-		imDim = (parm.sizeRoot(1))*parm.sbin;
+% 		imDim = (parm.sizeRoot(1))*parm.sbin;
 % 		scaleX = imDim / sizeX;
 % 		scaleY = imDim / sizeY;
 % 		scaleZ = imDim / sizeZ;
@@ -109,25 +108,28 @@ for cID = 1:numC,
 			v_face = v*rotationM;
             
             %% setting minimum to 0, maximum to image size.
-% 			minX = min(v_face(:,find(Xaxis)));
-% 			minY = min(v_face(:,find(Yaxis)));
-%             v_face(:,find(Xaxis)) = v_face(:,find(Xaxis)) - minX;
-% 			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis)) - minY;
-%             % minimum set to 0.
-%             
-%             maxX = max(v(:,find(Xaxis)));
-%             sizeX = maxX;
-%        		maxY = max(v(:,find(Yaxis)));
-%             sizeY = maxY;
-%     		imDim = (parm.sizeRoot(1))*parm.sbin;
-%      		scaleX = imDim / sizeX;
-%      		scaleY = imDim / sizeY;
-%             v_face(:,find(Xaxis)) = v_face(:,find(Xaxis))/maxX;
-%  			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis))/maxY;
-%             num2str(min(v_face))
-%             num2str(max(v_face))
-%             % maximum set to desired size.
-% 		    vertex_Face{face} = v_face;
+			minX = min(v_face(:,find(Xaxis)));
+			minY = min(v_face(:,find(Yaxis)));
+            minZ = min(v_face(:,find(Zaxis)));
+            v_face(:,find(Xaxis)) = v_face(:,find(Xaxis)) - minX;
+			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis)) - minY;
+            v_face(:,find(Zaxis)) = v_face(:,find(Zaxis)) - minZ;
+            % minimum set to 0.
+            
+            sizeX = max(v(:,find(Xaxis)));
+            sizeY = max(v(:,find(Yaxis)));
+            sizeZ = max(v(:,find(Zaxis)));
+    		imDim = (parm.sizeRoot(1))*parm.sbin;
+     		scaleX = imDim / sizeX;
+     		scaleY = imDim / sizeY;
+            scaleZ = imDim / sizeZ;
+            v_face(:,find(Xaxis)) = v_face(:,find(Xaxis))*scaleX;
+ 			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis))*scaleY;
+            v_face(:,find(Zaxis)) = v_face(:,find(Zaxis))*scaleZ;
+            num2str(min(v_face))
+            num2str(max(v_face))
+            % maximum set to desired size.
+		    vertex_Face{face} = v_face;
 %             keyboard;
 		    %% projected
 		end		
@@ -149,26 +151,28 @@ for cID = 1:numC,
 % 				end
 				%%%
 				partInd = partInd + 1;
-				for face = 1 : parm.numViews,
+				for face = 1 : 1, %parm.numViews,
 					v2 = vertex_Face{face};
 					v2_augmented = v2;	
 					f2_augmented = f;
-                    minV = min(v2);
-                    maxV = max(v2);
-                    minX = minV(find(Xaxis)) + indX*;
-                    minY = minV(find(Yaxis)) + indY*;
+%                     minV = min(v2);
+%                     maxV = max(v2);
+%                     diffV = maxV - minV;
+%                     scaleV = 
+%                     minX = minV(find(Xaxis)) + indX*;
+%                     minY = minV(find(Yaxis)) + indY*;
                     
 					%resetting minX,maxX and so on.
-% 					maxZ = max(v2(:,find(Zaxis)));
-% 					minX = indX*parm.sbin;
-% 					maxX = minX + (parm.sizeParts(2))*parm.sbin;
-% 					minY = indY*parm.sbin;
-% 					maxY = minY + (parm.sizeParts(1))*parm.sbin;
-%                     [minX maxX minY maxY]
-% 					[min(v2(:,find(Xaxis))) max(v2(:,find(Xaxis))) min(v2(:,find(Yaxis))) max(v2(:,find(Yaxis)))]
+					maxZ = max(v2(:,find(Zaxis)));
+					minX = indX*parm.sbin;
+					maxX = minX + (parm.sizeParts(2))*parm.sbin;
+					minY = indY*parm.sbin;
+					maxY = minY + (parm.sizeParts(1))*parm.sbin;
+                    [minX maxX minY maxY]
+					[min(v2(:,find(Xaxis))) max(v2(:,find(Xaxis))) min(v2(:,find(Yaxis))) max(v2(:,find(Yaxis)))]
                     
 					if 1
-						suffix = [ minY minX maxZ+1; minY maxX maxZ+1; maxY maxX maxZ+1; maxY minX maxZ+1];
+						suffix = [ minY minX maxZ; minY maxX maxZ; maxY maxX maxZ; maxY minX maxZ];
 						numV = size(v2,1);
 						faces_suffix = [numV+1 numV+2 numV+3; numV+1 numV+3 numV+4];
 						v2_augmented = [v2_augmented; suffix];
@@ -176,7 +180,11 @@ for cID = 1:numC,
 						part_mask = zeros(size(v2_augmented,1),1);
 						v2_match_x = (v2_augmented(:,find(Xaxis)) >= minX - small) & (v2_augmented(:,find(Xaxis)) <= maxX + small);
 						v2_match_y = (v2_augmented(:,find(Yaxis)) >= minY - small) & (v2_augmented(:,find(Yaxis)) <= maxY + small);
-						part_mask(v2_match_y & v2_match_x) = 1; %brought to the camera. 
+                        part_mask(v2_match_y & v2_match_x) = 1; %brought to the camera.
+%                         keyboard;
+                        foundZ = v2(find(part_mask(1:end-4)),find(Zaxis));
+                        maxZ = min(foundZ);
+                        v2_augmented(end-3:end,find(Zaxis)) = maxZ;
 					end
 % 					if 0, %check the parts..
 % 						options.face_vertex_color = v2(:,find(Zaxis));
@@ -193,6 +201,9 @@ for cID = 1:numC,
 					%%%% we can insert 4 vertices to mark the territory. Let's do that.
 					%suffix = [minX minY 0;
 					for uVid = 1:nuVs,
+                        if uVid > 2,
+                            return;
+                        end
 				        for angleid = 1:numangles,
 				            rotationMAT = compute_rotation(uVs(uVid,:),angles(angleid));
 %                             rotatedBBOX = BBOX*rotationMAT;
@@ -207,7 +218,7 @@ for cID = 1:numC,
 							%%%
 
 				            v3 = v2*rotationMAT;
-							v3_augmented = v2_augmented*rotationMAT;
+                            v3_augmented = v2_augmented*rotationMAT;
 							% Image for Root Filter.
 				    	    depths = v3(:,3);
 % 							depths = depths - min(depths);
@@ -263,6 +274,7 @@ for cID = 1:numC,
 % 							end
 				        end %loop over angleid
 		    		end %loop over uVid
+                    return;
 				end %loop over faces
 			end %loop over partX
 		end %loop over partY

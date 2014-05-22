@@ -1,8 +1,11 @@
 %% preparation. getting fronto parallel.
 addpath toolbox_graph
 %categories = {'monitortelevision'}%,'bed','chair','sofa','table'}
-categories = {'bed','chair','sofa','table'}
+categories = {'bed','chair','sofa','table','monitortelevision'}
 numC = length(categories);
+c = 'g'; %green
+cwidth = 10.4; %width of line
+s = '-'; %line style
 
 parm.sizeRoot = [10 10];
 parm.sizeParts = [3 3];
@@ -13,7 +16,8 @@ small = 1e-4;
 Xaxis = [0 1 0];
 Yaxis = [1 0 0];
 Zaxis = [0 0 1];
-
+BBOX = [ 0 0 1000; 80 80 1000];
+cropBOX = struct;
 parm.numViews = 4;
 
 % enumerating unit vectors
@@ -37,16 +41,17 @@ vertex_suffix = [ -20 -20 -inf; -20 100 -inf; 100 100 -inf; 100 -20 inf];
 %%%
 for cID = 1:numC,
 	category = categories{cID};
-	for insID = 1:1, %number of instances (3D models)
+	for insID = 1:5, %number of instances (3D models)
+%         keyboard;
 		if strcmp(category,'sofa'),
 			ANG = 60;
 		elseif strcmp(category,'monitortelevision'),
-			ANG = 85;
+			ANG = 88;
 		else,
 			 ANG = 75;
 		end
 
-		if strcmp(category,'monitortelevision') && insID > 1, %we have only one 3D model for monitors.
+		if insID>4 && strcmp(category,'monitortelevision') == 0, %we have only one 3D model for monitors.
 			continue;
 		end
 
@@ -59,7 +64,7 @@ for cID = 1:numC,
 		clear y p r;
 		%% loading 3D model	
 
-		load([element '.mat']);
+		load(['../3dModels/ypr/' element '.mat']);
 
 		v = load(fullfile('../3dModels/objs',[element '.obj.v']));
 		f = load(fullfile('../3dModels/objs',[element '.obj.f']));
@@ -68,22 +73,22 @@ for cID = 1:numC,
 		v = v*R; %vertices aligned to the fronto parallel view.
 
 		%% resizing the model to fit the parm size.
-		minX = min(v(:,find(Xaxis)));
-		maxX = max(v(:,find(Xaxis)));
-		sizeX = maxX - minX;
-		minY = min(v(:,find(Yaxis)));
-		maxY = max(v(:,find(Yaxis)));
-		sizeY = maxY - minY;
-		minZ = min(v(:,find(Zaxis)));
-		maxZ = max(v(:,find(Zaxis)));
-		sizeZ = maxZ - minZ;
-		imDim = (parm.sizeRoot(1))*parm.sbin; %add two padded hog cells.
-		scaleX = imDim / sizeX;
-		scaleY = imDim / sizeY;
-		scaleZ = imDim / sizeZ;
-		v(:,find(Xaxis)) = v(:,find(Xaxis)) * scaleX;
-		v(:,find(Yaxis)) = v(:,find(Yaxis)) * scaleY;
-		v(:,find(Zaxis)) = v(:,find(Zaxis)) * scaleZ;
+% 		minX = min(v(:,find(Xaxis)));
+% 		maxX = max(v(:,find(Xaxis)));
+% 		sizeX = maxX - minX;
+% 		minY = min(v(:,find(Yaxis)));
+% 		maxY = max(v(:,find(Yaxis)));
+% 		sizeY = maxY - minY;
+% 		minZ = min(v(:,find(Zaxis)));
+% 		maxZ = max(v(:,find(Zaxis)));
+% 		sizeZ = maxZ - minZ;
+		imDim = (parm.sizeRoot(1))*parm.sbin;
+% 		scaleX = imDim / sizeX;
+% 		scaleY = imDim / sizeY;
+% 		scaleZ = imDim / sizeZ;
+% 		v(:,find(Xaxis)) = v(:,find(Xaxis)) * scaleX;
+% 		v(:,find(Yaxis)) = v(:,find(Yaxis)) * scaleY;
+% 		v(:,find(Zaxis)) = v(:,find(Zaxis)) * scaleZ;
 		
 		%% Pre-Process-And-Keep Basis Views.
 		vertex_Face = cell(1,parm.numViews);
@@ -102,11 +107,31 @@ for cID = 1:numC,
 		    %%  projecting to the desired viewPoint 
 		    rotationM = compute_rotation(Xaxis,angle);
 			v_face = v*rotationM;
+            
+            %% setting minimum to 0, maximum to image size.
 			minX = min(v_face(:,find(Xaxis)));
 			minY = min(v_face(:,find(Yaxis)));
-			v_face(:,find(Xaxis)) = v_face(:,find(Xaxis)) - minX;
+            minZ = min(v_face(:,find(Zaxis)));
+            v_face(:,find(Xaxis)) = v_face(:,find(Xaxis)) - minX;
 			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis)) - minY;
+            v_face(:,find(Zaxis)) = v_face(:,find(Zaxis)) - minZ;
+            % minimum set to 0.
+            
+            sizeX = max(v(:,find(Xaxis)));
+            sizeY = max(v(:,find(Yaxis)));
+            sizeZ = max(v(:,find(Zaxis)));
+    		imDim = (parm.sizeRoot(1))*parm.sbin;
+     		scaleX = imDim / sizeX;
+     		scaleY = imDim / sizeY;
+            scaleZ = imDim / sizeZ;
+            v_face(:,find(Xaxis)) = v_face(:,find(Xaxis))*scaleX;
+ 			v_face(:,find(Yaxis)) = v_face(:,find(Yaxis))*scaleY;
+            v_face(:,find(Zaxis)) = v_face(:,find(Zaxis))*scaleZ;
+            num2str(min(v_face))
+            num2str(max(v_face))
+            % maximum set to desired size.
 		    vertex_Face{face} = v_face;
+%             keyboard;
 		    %% projected
 		end		
 
@@ -116,29 +141,37 @@ for cID = 1:numC,
 		partInd = 0;	
 		for indY = 0 : parm.sizeRoot(1) - parm.sizeParts(1),
 			for indX = 0 : parm.sizeRoot(2) - parm.sizeParts(2),
-				%%%
-				if 0
-					IM_p = IM;
-		        	minX = 1+indX*parm.sbin;
-        			maxX = minX + parm.sizeParts(2)*parm.sbin - 1;
-			        minY = 1+indY*parm.sbin;
-    	    		maxY = minY + parm.sizeParts(1)*parm.sbin - 1;
-			        IM_p(minY:maxY,minX:maxX) = 1;
-				end
+                %%%
+% 				if 0
+% 					IM_p = IM;
+% 		        	minX = 1+indX*parm.sbin;
+%         			maxX = minX + parm.sizeParts(2)*parm.sbin - 1;
+% 			        minY = 1+indY*parm.sbin;
+%     	    		maxY = minY + parm.sizeParts(1)*parm.sbin - 1;
+% 			        IM_p(minY:maxY,minX:maxX) = 1;
+% 				end
 				%%%
 				partInd = partInd + 1;
 				for face = 1 : parm.numViews,
 					v2 = vertex_Face{face};
 					v2_augmented = v2;	
 					f2_augmented = f;
+%                     minV = min(v2);
+%                     maxV = max(v2);
+%                     diffV = maxV - minV;
+%                     scaleV = 
+%                     minX = minV(find(Xaxis)) + indX*;
+%                     minY = minV(find(Yaxis)) + indY*;
+                    
 					%resetting minX,maxX and so on.
 					maxZ = max(v2(:,find(Zaxis)));
 					minX = indX*parm.sbin;
 					maxX = minX + (parm.sizeParts(2))*parm.sbin;
 					minY = indY*parm.sbin;
 					maxY = minY + (parm.sizeParts(1))*parm.sbin;
-					[minX maxX minY maxY]
+                    [minX maxX minY maxY]
 					[min(v2(:,find(Xaxis))) max(v2(:,find(Xaxis))) min(v2(:,find(Yaxis))) max(v2(:,find(Yaxis)))]
+                    
 					if 1
 						suffix = [ minY minX maxZ+1; minY maxX maxZ+1; maxY maxX maxZ+1; maxY minX maxZ+1];
 						numV = size(v2,1);
@@ -150,80 +183,89 @@ for cID = 1:numC,
 						v2_match_y = (v2_augmented(:,find(Yaxis)) >= minY - small) & (v2_augmented(:,find(Yaxis)) <= maxY + small);
 						part_mask(v2_match_y & v2_match_x) = 1; %brought to the camera. 
 					end
-					if 0, %check the parts..
-						options.face_vertex_color = v2(:,find(Zaxis));
-						clf;
-						%subplot(2,1,1);plot_mesh(v2,f,options);
-						figure(1);plot_mesh(v2,f,options);
-						options.face_vertex_color(find(part_mask)) = 0;
-						%options.face_vertex_color(find(part_mask==0)) = 100;
-						%subplot(2,1,2);plot_mesh(v2_augmented,f2_augmented,options);
-						figure(2);plot_mesh(v2_augmented,f2_augmented,options);
-						pause;
-						continue;
-					end
+% 					if 0, %check the parts..
+% 						options.face_vertex_color = v2(:,find(Zaxis));
+% 						clf;
+% 						%subplot(2,1,1);plot_mesh(v2,f,options);
+% 						figure(1);plot_mesh(v2,f,options);
+% 						options.face_vertex_color(find(part_mask)) = 0;
+% 						%options.face_vertex_color(find(part_mask==0)) = 100;
+% 						%subplot(2,1,2);plot_mesh(v2_augmented,f2_augmented,options);
+% 						figure(2);plot_mesh(v2_augmented,f2_augmented,options);
+% 						pause;
+% 						continue;
+% 					end
 					%%%% we can insert 4 vertices to mark the territory. Let's do that.
 					%suffix = [minX minY 0;
 					for uVid = 1:nuVs,
 				        for angleid = 1:numangles,
 				            rotationMAT = compute_rotation(uVs(uVid,:),angles(angleid));
-							
+%                             rotatedBBOX = BBOX*rotationMAT;
+% 							bbox = reshape(rotatedBBOX(:,1:2)',1,[]);
 							%%%
-							if 0
-								rotatedUnitSquare = unitSquare*rotationMAT;
-    		            		new_axis = [rotatedUnitSquare(:,2) rotatedUnitSquare(:,1)];
-        			        	tform = maketform('projective',init_axis,new_axis);
-				                [B,xdata,ydata] = imtransform(IM_p, tform, 'bicubic', 'udata', udata, 'vdata', vdata, 'size', size(IM_p),'fill',0);
-							end
+% 							if 0
+% 								rotatedUnitSquare = unitSquare*rotationMAT;
+%     		            		new_axis = [rotatedUnitSquare(:,2) rotatedUnitSquare(:,1)];
+%         			        	tform = maketform('projective',init_axis,new_axis);
+% 				                [B,xdata,ydata] = imtransform(IM_p, tform, 'bicubic', 'udata', udata, 'vdata', vdata, 'size', size(IM_p),'fill',0);
+% 							end
 							%%%
 
 				            v3 = v2*rotationMAT;
 							v3_augmented = v2_augmented*rotationMAT;
 							% Image for Root Filter.
 				    	    depths = v3(:,3);
-							depths = depths - min(depths);
+% 							depths = depths - min(depths);
 							%suffix = [
-							if 0
-							depths = depths - min(depths);
-							depths = depths / max(depths);
-							depths = 255*depths;
-							depths = mat2gray(depths,[-20 255+20])*255;
-							depths = 255 - depths;
-				            depthcolor = [depths depths depths];
-							end
+% 							if 0
+% 							depths = depths - min(depths);
+% 							depths = depths / max(depths);
+% 							depths = 255*depths;
+% 							depths = mat2gray(depths,[-20 255+20])*255;
+% 							depths = 255 - depths;
+% 				            depthcolor = [depths depths depths];
+% 							end
 							depths = 1.2*max(depths(:)) - depths;
 							depthcolor = depths;
 					        options.face_vertex_color = depthcolor;
 							if partInd == 1,
 								clf;
 				    	        plot_mesh(v3,f,options);
-			    	    	    print('-dpng',sprintf('parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
-				        	    im = imread(sprintf('parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
-								im = removePadding_slim(im);
-								im = rgb2gray(imresize(im,parm.sizeRoot*parm.sbin));
-					            imwrite(im,sprintf('parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+                                %                                 line([bbox(2) bbox(2) bbox(4) bbox(4) bbox(2)]', [bbox(1) bbox(3) bbox(3) bbox(1) bbox(1)]', 'color', c, 'linewidth', cwidth, 'linestyle', s);
+                                %line([bbox(1) bbox(1) bbox(3) bbox(3) bbox(1)]', [bbox(2) bbox(4) bbox(4) bbox(2) bbox(2)]', 'color', c, 'linewidth', cwidth, 'linestyle', s);
+%                                 keyboard;
+			    	    	    print('-dpng',sprintf('../../NIPS_DATA/parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+				        	    im = imread(sprintf('../../NIPS_DATA/parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+								[im t b l r] = removePadding_slim(im);
+                                cropBOX = setfield(cropBOX,sprintf('%s_f%d_u%d_a%d',element,face,uVid,angleid),[t b l r]);
+                               % 								im = rgb2gray(imresize(im,parm.sizeRoot*parm.sbin));
+					            imwrite(im,sprintf('../../NIPS_DATA/parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
 							end
 							clf;
-							if 0,
-								depthcolor = [depthcolor; 0; 0; 0; 0];
-								depthcolor(part_mask > 0.5) = 0; 
+							if 1,
+								depthcolor = [ones(size(depthcolor)); 0; 0; 0; 0];
+% 								depthcolor(part_mask > 0.5) = 0;
 							end
-							depthcolor(part_mask(1:end-4)>0.5) = 0;
+							%depthcolor(part_mask(1:end-4)>0.5) = 0;
 			            	options.face_vertex_color = depthcolor; %this part is Darkest.
-				            %plot_mesh(v3_augmented,f2_augmented,options);
-				            plot_mesh(v3,f,options);
-				            print('-dpng',sprintf('parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
-				            im = imread(sprintf('parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
-							im = removePadding_slim(im);
-							im = rgb2gray(imresize(im,parm.sizeRoot*parm.sbin));
-			            	imwrite(im,sprintf('parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
-							if 0,
-								subplot(2,2,1);plot_mesh(v2,f,options);
-								subplot(2,2,2); imshow(IM_p);
-								subplot(2,2,3);plot_mesh(v3,f,options);
-								subplot(2,2,4); imshow(B);
-								pause;
-							end
+ 				            plot_mesh(v3_augmented,f2_augmented,options);
+%  				            figure(3),plot_mesh(v3,f,options);
+%                             keyboard;
+				            print('-dpng',sprintf('../../NIPS_DATA/parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
+				            im = imread(sprintf('../../NIPS_DATA/parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
+                            crophere = getfield(cropBOX,sprintf('%s_f%d_u%d_a%d',element,face,uVid,angleid));
+                            
+							im = im(crophere(1):crophere(2),crophere(3):crophere(4),1);
+% 							im = rgb2gray(imresize(im,parm.sizeRoot*parm.sbin));
+			            	imwrite(im,sprintf('../../NIPS_DATA/parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
+%                             keyboard;
+% 							if 0,
+% 								subplot(2,2,1);plot_mesh(v2,f,options);
+% 								subplot(2,2,2); imshow(IM_p);
+% 								subplot(2,2,3);plot_mesh(v3,f,options);
+% 								subplot(2,2,4); imshow(B);
+% 								pause;
+% 							end
 				        end %loop over angleid
 		    		end %loop over uVid
 				end %loop over faces

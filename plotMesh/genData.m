@@ -3,7 +3,7 @@ addpath toolbox_graph
 categories = {'monitortelevision','bed','chair','sofa','table'}
 numC = length(categories);
 myfilter = fspecial('gaussian',[3 3], 2);
-for cID = 2:5, %numC,
+for cID = 1:5, %numC,
 	category = categories{cID};
 	for insID = 1:4,
 		if strcmp(category,'sofa'),
@@ -74,6 +74,7 @@ for cID = 2:5, %numC,
 		            depthcolor = [depths depths depths];
 		            options.face_vertex_color = depths; % mat2gray(depths);
 		            plot_mesh(v3,f,options);
+%                     keyboard;
 		            print('-dpng',sprintf('../../NIPS_DATA/%s/%s.f%d.u%d.a%d.png',category,element,face,uVid,angleid));
 		            im = imread(sprintf('../../NIPS_DATA/%s/%s.f%d.u%d.a%d.png',category,element,face,uVid,angleid));
 					im = removePadding_slim(im);

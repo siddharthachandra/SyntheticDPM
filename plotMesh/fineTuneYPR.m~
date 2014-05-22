@@ -1,0 +1,20 @@
+%% preparation. getting fronto parallel.
+
+addpath toolbox_graph
+element = 'monitortelevision1';
+load(sprintf('../3dModels/ypr/%s.mat',element));
+v = load(fullfile('../3dModels/objs',[element '.obj.v']));
+f = load(fullfile('../3dModels/objs',[element '.obj.f']));
+R = angle2dcm(y,p,r);
+v = v*R;
+
+depths = v(:,3);
+depthcolor = [depths depths depths];
+options.face_vertex_color = mat2gray(depths);
+plot_mesh(v,f,options);
+
+%find the biggest triangle.
+for fID = 1 : size(f,1),
+    
+end
+break;

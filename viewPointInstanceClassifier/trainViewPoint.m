@@ -14,18 +14,27 @@ dbstop if error;
 
 parm.fct = 0.2;
 
+if ~isfield(parm,'useDisp'),
+	parm.useDisp = 1;
+end
+
 if ~isfield(parm,'sizeRoot'),
 	parm.sizeRoot = [10 10]; % 8x8 bbox, 2 hog cell padding (4x4), 12x12 repn, after hog becomes 10x10.
 end
 
+parm.sizeDisp = 16;
 parm.featDim = 32;
+
+if parm.useDisp,
+	parm.featDim = parm.featDim + parm.sizeDisp;
+end
 
 if ~isfield(parm,'sbin'),
 	parm.sbin = 8;
 end
 
 if ~isfield(parm,'padHog'),
-	parm.padHog = 2;
+	parm.padHog = 0;
 end
 
 if ~isfield(parm,'sanityChecks'),
@@ -67,8 +76,13 @@ for sample = 1 : parm.numSamples,
 	im = imresize(im,(parm.sizeRoot+2)*parm.sbin);
 	%im       = imresize(depth_im,(parm.sizeRoot+2)*parm.sbin);
 	hog = features(double(im),parm.sbin);
+	if parm.useDisp,
+		dispF = getDispFeatures(imresize(im,parm.sizeRoot*parm.sbin),parm.sbin);
+		X{sample} = cat(3,hog,dispF);
+	else
+		X{sample} = hog;
+	end
 	%assert(all(size(hog) == [10 10 32]));
-	X{sample} = hog;
 	y.viewPoint = eval(lines{sample}(findstr(lines{sample},'.f')+2));
 	y.instance  = eval(lines{sample}(findstr(lines{sample},'.f')-1));
 	vps = union(vps,[y.viewPoint]);

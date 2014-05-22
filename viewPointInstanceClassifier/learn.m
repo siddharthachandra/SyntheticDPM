@@ -1,5 +1,8 @@
 %trainViewPoint('synthetic.bed4.3instances')
-
+categories = { 'monitortelevision','bed','chair','sofa','table'};
+numC = length(categories);
 for c = [ 0.01 0.1 1 10 100 1000]
-	trainViewPoint('table','c',c);
+	for cID = 1 : numC,
+		trainViewPoint(categories{cID},'c',c);
+	end
 end

@@ -1,10 +1,11 @@
 %% preparation. getting fronto parallel.
 addpath ..
-y = 0.00;
-p = -1.5;
-r = 0.0;
+y = -0.1800;
+p = -0.6500;
+r = 4.9900;
+% load ../3dModels/ypr/monitortelevision1.mat
 addpath toolbox_graph
-element = 'monitortelevision5';
+element = 'monitortelevision1';
 v = load(fullfile('../3dModels/objs',[element '.obj.v']));
 f = load(fullfile('../3dModels/objs',[element '.obj.f']));
 R = angle2dcm(y,p,r);

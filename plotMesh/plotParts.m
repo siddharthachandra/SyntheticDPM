@@ -1,61 +1,83 @@
-interesting_parts = [13,67,103,141,176,180,212];
-LISTNAME = 'listOfDats.monitortelevision.allViews'
-numViews = 3
-IMGDIR = 'parts_depths/depths'
-ntop = 10;
-c = 'g'; %green
-cwidth = 1.4; %width of line
-s = '-'; %line style
-LIST = textread(LISTNAME,'%s');
-numSamplesPerView = length(LIST)/numViews;
-%%% generate statistics
-numModels = length(LIST);
-%allParts = [];
-%for mdl = 1 : numModels,
-%	partImg = load(LIST{mdl});
-%	parts_present = unique(partImg(:));
-%	allParts = [allParts; parts_present];
-%end
-%bins = unique(allParts);
-%partHist = hist(allParts,bins);
+%% preparation. getting fronto parallel.
+addpath toolbox_graph
+%categories = {'monitortelevision'}%,'bed','chair','sofa','table'}
+categories = {'bed','chair','sofa','table','monitortelevision'}
+numC = length(categories);
 
-%% GET TOP PARTS
-%[vals partIDs] = sort(partHist,'descend');
-%partIDs = bins(partIDs);
+parm.sizeRoot = [10 10];
+parm.sizeParts = [3 3];
+parm.sbin = 8;
+parm.numViews = 4; %front, rear, two side-views. 
+parm.numParts = prod(parm.sizeRoot - parm.sizeParts + 1);
+small = 1e-4;
+Xaxis = [0 1 0];
+Yaxis = [1 0 0];
+Zaxis = [0 0 1];
+cropBOX = struct;
+parm.numViews = 4;
 
-for partNUM = 1 : length(interesting_parts),
-	partID = interesting_parts(partNUM);
-	for view = 1:numViews,
-    	count = 0;
-		for mdl = (view-1)*numSamplesPerView+1:(view-1)*numSamplesPerView+100, %randperm(numModels),
-			partImg = load(LIST{mdl});
-			if any(partImg(:) == partID),
-				mask = partImg == partID;
-	            %[y,x,Y,X] = bboxFromMask(mask);
-				[dir fil] = fileparts(LIST{mdl});
-				im = imread(fullfile(IMGDIR,[fil '.png']));
-				im = imresize(im,size(mask));
-				r = rgb2gray(im);
-				g = r;
-				b = r;
-				r(mask) = 0;
-				g(mask) = 255;
-				b(mask) = 0;
-				im = cat(3,r,g,b);
-				imshow(im);
-				%keyboard;
-			    %line([x x X X x]', [y Y Y y y]', 'color', c, 'linewidth', cwidth, 'linestyle', s);
-			    print('-dpng',sprintf('prominentParts/part_%d_%s.png',partID,fil));
-			    im = imread(sprintf('prominentParts/part_%d_%s.png',partID,fil));
-				im = removePadding_noslim(im);
-				im = imresize(im,0.5);
-				imwrite(im,sprintf('prominentParts/part_%d_%s.png',partID,fil));
-	            count = count + 1;
-	            fprintf('part %d/%d view %d/%d image %d/%d\n',partNUM,length(interesting_parts),view,numViews,count,15);
-	            if count >= 15,
-	                break;
-	            end
-			end
+% enumerating unit vectors
+gridSize = 3;
+uVs = getUnitVectors(gridSize);
+nuVs = size(uVs,1);
+% enumerating angles
+angles = linspace(-pi/24,pi/24,5);
+numangles = length(angles);
+
+
+for cID = 1:numC,
+	category = categories{cID};
+	for insID = 1:1, %number of instances (3D models)
+%         keyboard;
+		if strcmp(category,'sofa'),
+			ANG = 60;
+		elseif strcmp(category,'monitortelevision'),
+			ANG = 88;
+		else,
+			 ANG = 75;
 		end
-	end
-end
+
+		if insID>4 && strcmp(category,'monitortelevision') == 0, %we have only one 3D model for monitors.
+			continue;
+		end
+
+		if strcmp(category,'bed') && insID == 3, %we have only three 3D models for beds.
+			continue;
+		end
+
+		element = [category num2str(insID)];
+
+		partInd = 0;	
+		for indY = 0 : parm.sizeRoot(1) - parm.sizeParts(1),
+			for indX = 0 : parm.sizeRoot(2) - parm.sizeParts(2),
+				partInd = partInd + 1;
+				for face = 1 : 1, %parm.numViews,
+					for uVid = 1:nuVs,
+				        for angleid = 1:numangles,
+							clf;
+				        	baseIM = imread(sprintf('../../NIPS_DATA/parts_depths/depths/%s.f%d.u%d.a%d.png',element,face,uVid,angleid));
+							%baseIM = baseIM(:,:,1);
+				            mask = imread(sprintf('../../NIPS_DATA/parts_depths/parts/%s.f%d.u%d.a%d.p%d.png',element,face,uVid,angleid,partInd));
+							mask = mask > 100;
+							baseIM = baseIM.*uint8(cat(3,mask,mask,mask));
+% 							keyboard;
+							baseIM = baseIM + uint8(cat(3,zeros(size(mask)),200*(1-mask),zeros(size(mask))));
+							
+							imshow(baseIM);
+% 							keyboard;
+							[x y X Y] = bboxFromMask(mask);
+							bbox = [y x Y X];
+							imshow(baseIM);
+							c = 'g'; %green
+							cwidth = 2.4; %width of line
+							s = '-'; %line style
+							line([bbox(1) bbox(1) bbox(3) bbox(3) bbox(1)]', [bbox(2) bbox(4) bbox(4) bbox(2) bbox(2)]', 'color', c, 'linewidth', cwidth, 'linestyle', s);
+							print('-dpng',sprintf('../../NIPS_DATA/plotParts/%d/%s.f%d.u%d.a%d.png',partInd,element,face,uVid,angleid));
+				        end %loop over angleid
+		    		end %loop over uVid
+				end %loop over faces
+                return;
+			end %loop over partX
+		end %loop over partY
+	end %loop over Instances
+end %loop over category
