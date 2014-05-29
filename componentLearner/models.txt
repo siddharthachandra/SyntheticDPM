@@ -1,0 +1,17 @@
+monitortelevision.new.list
+monitortelevision1.list
+bed1.list
+bed2.list
+bed4.list
+chair1.list
+chair2.list
+chair3.list
+chair4.list
+sofa1.list
+sofa2.list
+sofa3.list
+sofa4.list
+table1.list
+table2.list
+table3.list
+table4.list
